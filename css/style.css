@@ -51,7 +51,12 @@ h1, h2, h3, h4 { font-family: var(--font-display); color: var(--heading); line-h
 h1 { font-size: clamp(2.2rem, 5.5vw, 3.4rem); font-weight: 700; }
 h2 { font-size: clamp(1.5rem, 3.2vw, 2rem); }
 h3 { font-size: 1.25rem; }
-p { margin: 0 0 16px; max-width: 68ch; }
+h2.mini { font-size: 1.25rem; }
+p { margin: 0 0 16px; max-width: 68ch; text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; }
+.tl-bullets li, .list-plain li { text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; }
+@media (max-width: 600px) {
+  p, .tl-bullets li, .list-plain li { text-align: left; hyphens: none; -webkit-hyphens: none; }
+}
 a { color: inherit; text-decoration: none; }
 a.inline-link { color: var(--accent); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
 a.inline-link:hover { text-decoration-color: var(--accent); }
@@ -303,7 +308,6 @@ img { max-width: 100%; display: block; }
   font-family: var(--font-mono); color: var(--text-muted); font-size: 0.85rem;
   flex: none; width: 34px; padding-top: 4px;
 }
-.proj-num::before { content: "§"; }
 .proj-body { flex: 1; min-width: 0; }
 .proj-body h3 { font-size: 1.1rem; margin-bottom: 8px; transition: color 0.15s ease; }
 .proj-body p { color: var(--text-muted); margin-bottom: 12px; }
@@ -329,7 +333,7 @@ img { max-width: 100%; display: block; }
   flex-wrap: wrap; padding-block: 40px; border-top: 1px solid var(--border);
 }
 .cta-band p { font-size: 1.05rem; color: var(--text); margin: 0; }
-@media (max-width: 600px) { .cta-band { justify-content: center; text-align: center; } }
+@media (max-width: 600px) { .cta-band { justify-content: center; text-align: center; } .cta-band p { text-align: center; } }
 
 /* ==========================================================================
    About page
@@ -352,7 +356,7 @@ img { max-width: 100%; display: block; }
 
 .rail { border-left: 1px solid var(--border); padding-left: 28px; }
 .rail .fact { margin-bottom: 24px; }
-.rail .fact h4 {
+.rail .fact h3 {
   font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase;
   letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 8px; font-weight: 500;
 }
@@ -378,7 +382,7 @@ img { max-width: 100%; display: block; }
   display: flex; justify-content: space-between; align-items: baseline;
   flex-wrap: wrap; gap: 8px; margin-bottom: 4px;
 }
-.tl-header h3 { margin-bottom: 0; }
+.tl-header h2 { margin-bottom: 0; font-size: 1.25rem; }
 .tl-role { color: var(--accent); font-weight: 600; margin-bottom: 12px; font-size: 0.95rem; }
 .tl-meta { font-family: var(--font-mono); color: var(--text-muted); font-size: 0.85rem; white-space: nowrap; }
 .tl-bullets { margin: 0 0 16px; }
