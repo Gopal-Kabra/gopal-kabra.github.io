@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects · Gopal Kabra</title>
+<meta name="description" content="Gopal Kabra's projects: Railway Predictive Maintenance, Industry 4.0 competition winner, the Longevity Economy MSc thesis, Customer Segmentation and a Nestle financial analysis.">
+<meta property="og:title" content="Projects · Gopal Kabra">
+<meta property="og:description" content="Four projects, with the problem behind each one, the approach, and the measured result.">
+<meta property="og:url" content="https://gopal-kabra.github.io/projects.html">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Gopal<span>Kabra</span></a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="experience.html">Experience</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="contact.html">Contact</a>
+      <a href="assets/cv/Gopal_Kabra_CV.pdf" class="nav-cv" download>CV ↓</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <section class="section container">
+    <p class="eyebrow reveal">Projects</p>
+    <h1 class="reveal">A closer look at four projects</h1>
+
+    <div class="project-block reveal" id="railway">
+      <div class="project-head"><span class="proj-num">01</span>
+        <div>
+          <span class="project-badge">1st place of 40 international teams, Industry 4.0 Student Contest 2024</span>
+          <h2>Railway Predictive Maintenance</h2>
+          <p class="project-subtitle">Catching air-compressor failures before they happen, using 7 months of sensor data from a Porto metro system.</p>
+        </div>
+      </div>
+
+      <div class="project-section">
+        <p class="field-label">Problem</p>
+        <p>A metro air compressor fails roughly every two months. Each unplanned breakdown costs €10,000 to €15,000 in emergency repairs and lost service.</p>
+      </div>
+
+      <div class="project-section">
+        <p class="field-label">Approach</p>
+        <p>Supervised models were the first attempt. XGBoost kept choking on the class imbalance, since failures made up less than 0.5% of the data. Switching to an Isolation Forest, trained only on what normal operation looks like, fixed it. About 179 features came from 15 onboard sensors: rolling averages, rate of change, cross-sensor ratios. The split between training, validation and test data followed time, not randomness, so the model never saw the future by accident.</p>
+      </div>
+
+      <div class="project-section">
+        <p class="field-label">What went wrong first</p>
+        <p>An early version of the model learned the maintenance schedule instead of the sensors. It flagged failures by noticing Monday mornings. Time-of-day features got cut after that.</p>
+      </div>
+
+      <div class="results-row">
+        <div class="stat-block">
+          <span class="stat-number">2/2</span>
+          <span class="stat-label">Failures detected in test period</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-number">≥48h</span>
+          <span class="stat-label">Advance warning</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-number">&lt;1</span>
+          <span class="stat-label">False alarm per day</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-number">&gt;20%</span>
+          <span class="stat-label">Cost reduction vs run-to-failure</span>
+        </div>
+      </div>
+      <p class="muted">It also beat a supervised XGBoost baseline, which caught only 1 of 2 failures with about 24 hours of lead time.</p>
+
+      <div class="project-footer">
+        <div class="tag-row">
+          <span class="tag">Python 3.11</span>
+          <span class="tag">pandas</span>
+          <span class="tag">scikit-learn</span>
+          <span class="tag">XGBoost</span>
+          <span class="tag">Streamlit</span>
+          <span class="tag">Plotly</span>
+          <span class="tag">pytest</span>
+        </div>
+        <a href="https://github.com/Gopal-Kabra/railway-predictive-maintenance" class="btn-secondary" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+    </div>
+
+    <div class="project-block reveal" id="thesis">
+      <div class="project-head"><span class="proj-num">02</span>
+        <div>
+          <span class="project-badge">Published on Politecnico di Milano's TESI portal</span>
+          <h2>Longevity Economy, MSc thesis</h2>
+          <p class="project-subtitle">Innovation and technological specialization: meeting intergenerational needs in the longevity economy.</p>
+        </div>
+      </div>
+
+      <div class="project-section">
+        <p class="field-label">Question</p>
+        <p>Does what venture-backed longevity startups build actually match the shape of the ageing problem they claim to solve?</p>
+      </div>
+
+      <div class="project-section">
+        <p class="field-label">Approach</p>
+        <p>Classified 224 venture-backed longevity startups by the functional needs they address: 24 sub-domains across 5 macro-domains. Ran K-medoids clustering on Jaccard similarity, then checked it against a 1,000-permutation null model. The empirical silhouette came out to <strong class="metric">0.373</strong> at K=8, against a null 95th percentile of 0.293.</p>
+      </div>
+
+      <div class="project-section">
+        <p class="field-label">Finding</p>
+        <p><strong class="metric">66%</strong> of the ecosystem addresses health. Social participation and personal development produce no standalone configurations at all. That gap between what policy says is needed and what actually gets funded looks structural, not accidental. Supervised by Prof. Luca Gastaldi.</p>
+      </div>
+
+      <div class="project-footer">
+        <div class="tag-row">
+          <span class="tag">Python</span>
+          <span class="tag">k-medoids</span>
+          <span class="tag">Permutation testing</span>
+          <span class="tag">Research</span>
+        </div>
+        <a href="https://www.politesi.polimi.it/handle/10589/252936" class="btn-secondary" target="_blank" rel="noopener">Read the thesis →</a>
+      </div>
+    </div>
+
+    <div class="project-block reveal" id="segmentation">
+      <div class="project-head"><span class="proj-num">03</span>
+        <div><h2>Customer segmentation &amp; CRM analytics</h2></div>
+      </div>
+      <div class="project-section">
+        <p>RFM segmentation and K-means clustering on <strong class="metric">50,000</strong> customer records. Cohort analysis flagged three high-value at-risk cohorts, and the retention recommendations that followed cut churn by <strong class="metric">20%</strong> and lifted 6-month retention by <strong class="metric">25%</strong>.</p>
+      </div>
+      <div class="tag-row">
+        <span class="tag">Python</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">scikit-learn</span>
+        <span class="tag">RFM</span>
+      </div>
+    </div>
+
+    <div class="project-block reveal" id="nestle">
+      <div class="project-head"><span class="proj-num">04</span>
+        <div><h2>Nestlé, financial and business analysis</h2></div>
+      </div>
+      <div class="project-section">
+        <p>Comparative analysis across liquidity, profitability and cost-structure metrics on a multi-division portfolio. Found a <strong class="metric">15%</strong> cost-savings opportunity and turned it into a structured budget-reallocation recommendation.</p>
+      </div>
+      <div class="tag-row">
+        <span class="tag">Financial ratio analysis</span>
+        <span class="tag">Excel</span>
+        <span class="tag">Variance analysis</span>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> Gopal Kabra</p>
+    <div class="footer-links">
+      <a href="mailto:gopalkabra03@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/gopal-kabra" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/Gopal-Kabra" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
